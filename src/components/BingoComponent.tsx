@@ -1,9 +1,9 @@
-import React, {useState, GetDerivedStateFromProps} from "react";
-import {LayoutChangeEvent, LayoutRectangle, StyleSheet, TextInput, View} from "react-native";
+import React, {useState} from "react";
+import { StyleSheet, TextInput, View} from "react-native";
 
 type BingoProps = {
-    width: number
-    height: number
+    width: number;
+    height: number;
 }
 type BoxesProps = {
     items: string[];
@@ -66,7 +66,7 @@ const BingoComponent: React.FC<BingoProps> = ({width, height}: BingoProps) => {
                 const rowValues = values.slice(yPosition*width, yPosition*width + width)
                 console.log('rowValues: ', {yPosition, start: yPosition*width, end: yPosition*width + width, rowValues})
                 return (
-                    <BoxesRow key={yPosition} items={rowValues} updateFn={(xPosition, value) => updateBoxesValue(xPosition*yPosition, value)} />
+                    <BoxesRow key={yPosition} items={rowValues} updateFn={(xPosition, value) => updateBoxesValue(xPosition + (yPosition * width), value)} />
                 )
             })}
 
