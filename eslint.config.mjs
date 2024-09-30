@@ -2,10 +2,9 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 
-
 export default [
   {
-    ignores: [".expo/*"]
+    ignores: [".expo/*"],
   },
   {
     files: ["src/**/*.{js,mjs,cjs,ts,jsx,tsx}", "App.js"],
@@ -16,8 +15,7 @@ export default [
     ...pluginReact.configs.flat.recommended,
     rules: {
       "react/react-in-jsx-scope": "off",
-      "react/jsx-uses-react": "off"
+      "react/jsx-uses-react": "off",
     },
   },
-
 ];

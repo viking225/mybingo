@@ -1,5 +1,4 @@
 export type BingoLayout = {
-    width: number
-    height: number
-}
-
+  width: number;
+  height: number;
+};
