@@ -1,6 +1,6 @@
 export default {
-    text: {
-        h1: 34,
-        default: 16
-    }
-}
+  text: {
+    h1: 34,
+    default: 16,
+  },
+};
