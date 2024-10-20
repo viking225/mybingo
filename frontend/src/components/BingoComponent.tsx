@@ -1,27 +1,26 @@
 import React, { useState } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
-
-type BingoProps = {
-  width: number;
-  height: number;
-};
-type BoxesProps = {
-  items: string[];
-  updateFn: (index: number, text: string) => void;
-};
+import { Bingo } from "../types";
 
 const gap = 5;
 
-const BoxesRow: React.FC<BoxesProps> = ({ items, updateFn }: BoxesProps) => {
+const BoxesRow: React.FC<Bingo.RowComponentParams> = ({
+  items,
+  updateFn,
+}: Bingo.RowComponentParams) => {
   const style = StyleSheet.create({
     row: {
       display: "flex",
       flexDirection: "row",
     },
     box: {
-      backgroundColor: "red",
+      backgroundColor: "white",
       marginHorizontal: gap / 2,
       marginVertical: gap / 2,
+      borderStyle: "solid",
+      borderWidth: 1,
+      borderColor: "black",
+      textAlign: "center",
       minHeight: 50,
       minWidth: 50,
       flexGrow: 1,
@@ -43,15 +42,13 @@ const BoxesRow: React.FC<BoxesProps> = ({ items, updateFn }: BoxesProps) => {
   );
 };
 
-const BingoComponent: React.FC<BingoProps> = ({
+const BingoComponent: React.FC<Bingo.ContainerComponentParams> = ({
   width,
   height,
-}: BingoProps) => {
+}: Bingo.ContainerComponentParams) => {
   const [values, _setValues] = useState<string[]>(
     Array(Number(width) * Number(height)).fill(""),
   );
-
-  console.log("allvalues: ", values);
 
   const updateBoxesValue = (index: number, value: string) => {
     const data = [...values];
@@ -75,12 +72,7 @@ const BingoComponent: React.FC<BingoProps> = ({
             yPosition * width,
             yPosition * width + width,
           );
-          console.log("rowValues: ", {
-            yPosition,
-            start: yPosition * width,
-            end: yPosition * width + width,
-            rowValues,
-          });
+
           return (
             <BoxesRow
               key={yPosition}
