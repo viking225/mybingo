@@ -2,15 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import Size from "@constants/styles/size";
 import { BingoComponent } from "@components/BingoComponent";
-
-function allowNumberOnly(
-  input: string,
-  dispatch: React.Dispatch<React.SetStateAction<string>>,
-): void {
-  input.replace(/[^0-9]/g, "");
-  console.log("input: ", input);
-  dispatch(input);
-}
+import { dispatchNumberOnly } from "../utils";
 
 const CreateBingoComponent: React.FC = () => {
   const [width, setWidth] = useState<string>("3");
@@ -22,8 +14,8 @@ const CreateBingoComponent: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Parameter for the bingo</Text>
-      <View style={styles.divider} />
-      <View style={styles.inputContainer}>
+      <div style={styles.divider} />
+      <div style={styles.inputContainer}>
         <>
           Width:
           <TextInput
@@ -31,7 +23,7 @@ const CreateBingoComponent: React.FC = () => {
             value={`${width}`}
             placeholder="Width"
             keyboardType="numeric"
-            onChangeText={(text) => allowNumberOnly(text, setWidth)}
+            onChangeText={(text) => dispatchNumberOnly(text, setWidth)}
           />
         </>
         <>
@@ -41,10 +33,10 @@ const CreateBingoComponent: React.FC = () => {
             value={`${height}`}
             placeholder="Height"
             keyboardType="numeric"
-            onChangeText={(text) => allowNumberOnly(text, setHeight)}
+            onChangeText={(text) => dispatchNumberOnly(text, setHeight)}
           />
         </>
-      </View>
+      </div>
       <View style={styles.preview}>
         <BingoComponent
           key={`${getNumberParams().width}-${getNumberParams().height}`}
