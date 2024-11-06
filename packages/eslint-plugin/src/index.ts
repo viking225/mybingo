@@ -1,7 +1,7 @@
 import { rule as disableDivInJsx} from './disable-div-in-jsx'
 
 
-export const plugin = {
+const plugin = {
     meta: {
         name: '@mybingo/eslint-plugin'
     },
@@ -9,3 +9,5 @@ export const plugin = {
         'disable-div-in-jsx': disableDivInJsx
     }
 }
+
+export default plugin

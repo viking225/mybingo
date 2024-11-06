@@ -14,8 +14,8 @@ const CreateBingoComponent: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Parameter for the bingo</Text>
-      <div style={styles.divider} />
-      <div style={styles.inputContainer}>
+      <View style={styles.divider} />
+      <View style={styles.inputContainer}>
         <>
           Width:
           <TextInput
@@ -36,7 +36,7 @@ const CreateBingoComponent: React.FC = () => {
             onChangeText={(text) => dispatchNumberOnly(text, setHeight)}
           />
         </>
-      </div>
+      </View>
       <View style={styles.preview}>
         <BingoComponent
           key={`${getNumberParams().width}-${getNumberParams().height}`}

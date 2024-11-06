@@ -18,8 +18,18 @@ test.run('disable-div-in-jsx', rule, {
         {code: `<input test-id="all"></input>`}
     ],
     invalid: [
-        {code: `<div test-id="all"></div>`, errors: [{messageId: 'avoidDiv'}] },
-        {code: `<div test-id="all"/>`, errors: [{messageId: 'avoidDiv'}]}
+        {code: `<div
+                    class="2000"
+                    test-id="all">
+                    my big div
+                </div>`
+            , output: `<View
+                    class="2000"
+                    test-id="all">
+                    my big div
+                </View>`, errors: [{messageId: 'avoidDiv'}] },
+        {code: `<div test-id="all"></div>`, output: '<View test-id="all"></View>', errors: [{messageId: 'avoidDiv'}] },
+        {code: `<div test-id="all"/>`, output: '<View test-id="all"/>', errors: [{messageId: 'avoidDiv'}]}
     ]
 })
 

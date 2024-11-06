@@ -64,27 +64,28 @@ const BingoComponent: React.FC<Bingo.ContainerComponentParams> = ({
   });
 
   return (
-    <div style={styles.container}>
-      {Array(height)
-        .fill(null)
-        .map((value, yPosition) => {
-          const rowValues = values.slice(
-            yPosition * width,
-            yPosition * width + width,
-          );
+      <View style={styles.container}>
+        {Array(height)
+            .fill(null)
+            .map((value, yPosition) => {
+              const rowValues = values.slice(
+                  yPosition * width,
+                  yPosition * width + width,
+              );
 
-          return (
-            <BoxesRow
-              key={yPosition}
-              items={rowValues}
-              updateFn={(xPosition, value) =>
-                updateBoxesValue(xPosition + yPosition * width, value)
-              }
-            />
-          );
-        })}
-    </div>
+              return (
+                  <BoxesRow
+                      key={yPosition}
+                      items={rowValues}
+                      updateFn={(xPosition, value) =>
+                          updateBoxesValue(xPosition + yPosition * width, value)
+                      }
+                  />
+              );
+            })}
+      </View>
+
   );
 };
 
-export { BingoComponent };
+export {BingoComponent};
