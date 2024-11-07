@@ -21,15 +21,18 @@ export const rule = createRule({
 
         return {
             JSXElement(node: TSESTree.JSXElement) {
-                const isIdentifier = node.openingElement.name.type === 'JSXIdentifier'
-                const isDivElement = node.openingElement.name.name === 'div'
-                const hasClosingElement = node.closingElement && node.closingElement.name.name  === 'div'
+                const openingTagIdentifier = node.openingElement.name as TSESTree.JSXIdentifier
+                const closingTagIdentifier = node.closingElement?.name && (node.closingElement.name as TSESTree.JSXIdentifier)
+
+                const isIdentifier = openingTagIdentifier.type === 'JSXIdentifier'
+                const isDivElement = openingTagIdentifier.name
+
                 const fixes: ((fixer: TSESLint.RuleFixer) => TSESLint.RuleFix)[] = []
                 if (isIdentifier && isDivElement) {
-                    fixes.push((fixer: TSESLint.RuleFixer) => fixer.replaceText(node.openingElement.name, "View"))
+                    fixes.push((fixer: TSESLint.RuleFixer) => fixer.replaceText(openingTagIdentifier, "View"))
 
-                    if (hasClosingElement) {
-                        fixes.push((fixer: TSESLint.RuleFixer) => fixer.replaceText(node.closingElement.name, "View"))
+                    if (closingTagIdentifier?.name === 'div') {
+                        fixes.push((fixer: TSESLint.RuleFixer) => fixer.replaceText(closingTagIdentifier, "View"))
                     }
                 }
                     if (fixes.length) {

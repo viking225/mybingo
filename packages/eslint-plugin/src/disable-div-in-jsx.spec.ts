@@ -1,15 +1,7 @@
 import { RuleTester } from '@typescript-eslint/rule-tester'
 import { rule } from './disable-div-in-jsx'
 import {afterAll} from "vitest";
-const test = new RuleTester({  languageOptions: {
-        parserOptions: {
-            ecmaVersion: 2018,
-            sourceType: 'module',
-            ecmaFeatures: {
-                jsx: true
-            }
-        },
-    },});
+const test = new RuleTester();
 
 test.run('disable-div-in-jsx', rule, {
     valid: [
