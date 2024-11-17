@@ -1,34 +1,53 @@
-import {Button, Image, ScrollView, StyleSheet, Text, View} from "react-native";
+import {
+  Button, ButtonProps,
+  Image, Pressable,
+  ScrollView, StyleProp,
+  StyleSheet,
+  Text,
+  View, ViewStyle,
+} from "react-native";
 import React from "react";
+import {useNavigation} from "@react-navigation/native";
+import {Routes} from "../../types/Navigation";
 
 const styles = StyleSheet.create({
-    logo: { width: 200, height: 200 },
-    page: {
-        backgroundColor: 'white',
-        width: "100%"
-    },
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        marginHorizontal: 'auto',
-    },
-    actions: {
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    }
-})
+  page: {
+    backgroundColor: "white",
+    width: "100%",
+  },
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    marginHorizontal: "auto",
+  },
+});
+
+type ActionProps = {
+  onPress?: ButtonProps['onPress'],
+  title: string
+  style?: {
+    button: StyleProp<ViewStyle>;
+    text: StyleProp<ViewStyle>
+  }
+}
+
+const Action = ({onPress, title, style }: ActionProps) => {
+  return (
+      <Pressable style={style?.button} onPress={onPress}>
+        <Text style={style?.text}>{title}</Text>
+      </Pressable>
+  )
+}
 
 const HomeScreen = () => {
+  const navigation = useNavigation()
   return (
     <ScrollView style={styles.page}>
-        <View style={styles.container}>
-            <Image
-                source={require('@assets/homeLogo.png')}
-                style={styles.logo}
-            />
-            <Button title="Create" />
+      <View style={styles.container}>
+        <Action title="Create" onPress={() => navigation.navigate(Routes.Create)} />
+        <Action title="Search"  />
 
-        </View>
+      </View>
     </ScrollView>
   );
 };

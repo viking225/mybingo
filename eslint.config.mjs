@@ -1,16 +1,16 @@
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
-import myBingoPlugin from '@mybingo/eslint-plugin'
+import myBingoPlugin from "@mybingo/eslint-plugin";
 
 export default [
   {
-    ignores: [".expo/*", "packages/**"]
+    ignores: [".expo/*", "packages/**"],
   },
   {
     plugins: {
-      myBingoPlugin
-    }
+      myBingoPlugin,
+    },
   },
   {
     files: ["src/**/*.{js,mjs,cjs,ts,jsx,tsx}", "App.js"],
@@ -22,7 +22,7 @@ export default [
     rules: {
       "react/react-in-jsx-scope": "off",
       "react/jsx-uses-react": "off",
-      'myBingoPlugin/disable-div-in-jsx': 'error'
+      "myBingoPlugin/disable-div-in-jsx": "error",
     },
   },
 ];

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
-import { Bingo } from "../types";
+import { RowComponentParams,ContainerComponentParams } from "../types/Bingo";
 
 const gap = 5;
 
-const BoxesRow: React.FC<Bingo.RowComponentParams> = ({
+const BoxesRow: React.FC<RowComponentParams> = ({
   items,
   updateFn,
-}: Bingo.RowComponentParams) => {
+}: RowComponentParams) => {
   const style = StyleSheet.create({
     row: {
       display: "flex",
@@ -42,10 +42,10 @@ const BoxesRow: React.FC<Bingo.RowComponentParams> = ({
   );
 };
 
-const BingoComponent: React.FC<Bingo.ContainerComponentParams> = ({
+const BingoComponent: React.FC<ContainerComponentParams> = ({
   width,
   height,
-}: Bingo.ContainerComponentParams) => {
+}: ContainerComponentParams) => {
   const [values, _setValues] = useState<string[]>(
     Array(Number(width) * Number(height)).fill(""),
   );
@@ -64,28 +64,27 @@ const BingoComponent: React.FC<Bingo.ContainerComponentParams> = ({
   });
 
   return (
-      <View style={styles.container}>
-        {Array(height)
-            .fill(null)
-            .map((value, yPosition) => {
-              const rowValues = values.slice(
-                  yPosition * width,
-                  yPosition * width + width,
-              );
+    <View style={styles.container}>
+      {Array(height)
+        .fill(null)
+        .map((value, yPosition) => {
+          const rowValues = values.slice(
+            yPosition * width,
+            yPosition * width + width,
+          );
 
-              return (
-                  <BoxesRow
-                      key={yPosition}
-                      items={rowValues}
-                      updateFn={(xPosition, value) =>
-                          updateBoxesValue(xPosition + yPosition * width, value)
-                      }
-                  />
-              );
-            })}
-      </View>
-
+          return (
+            <BoxesRow
+              key={yPosition}
+              items={rowValues}
+              updateFn={(xPosition, value) =>
+                updateBoxesValue(xPosition + yPosition * width, value)
+              }
+            />
+          );
+        })}
+    </View>
   );
 };
 
-export {BingoComponent};
+export { BingoComponent };
