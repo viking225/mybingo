@@ -4,7 +4,8 @@
   "main": "babel.config.js",
   "scripts": {
     "frontend:start": "npm run start -w @mybingo/frontend",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "test": "vitest"
   },
   "workspaces": [
     "packages/*",

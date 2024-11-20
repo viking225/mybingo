@@ -1,13 +1,17 @@
 import { RuleTester } from "@typescript-eslint/rule-tester";
 import { rule } from "./disable-div-in-jsx";
-import { afterAll } from "vitest";
-const test = new RuleTester();
+const test = new RuleTester({
+  languageOptions: {
+    parser: "@typescript-eslint/parser",
+  },
+  files: ["*.ts"],
+});
 
 test.run("disable-div-in-jsx", rule, {
   valid: [
     { code: `<view test-id="all"></view>` },
     { code: `<span test-id="all"></span>` },
-    { code: `<input test-id="all"></input>` },
+    { code: `<input test-id="all"/>` },
   ],
   invalid: [
     {

@@ -12,6 +12,7 @@
   },
   "exports": "./dist/index.js",
   "dependencies": {
+    "@typescript-eslint/parser": "^8.15.0",
     "eslint": "^9.8.0"
   },
   "devDependencies": {
