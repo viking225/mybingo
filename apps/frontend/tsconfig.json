@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.base.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
@@ -31,6 +31,7 @@
     "skipLibCheck": true,
     "baseUrl": "src",
     "paths": {
+      "@/*": ["./*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@assets/*": ["../assets/*"]
