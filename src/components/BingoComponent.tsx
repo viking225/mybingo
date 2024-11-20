@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
-import { RowComponentParams,ContainerComponentParams } from "../types/Bingo";
+import { RowComponentParams, ContainerComponentParams } from "../types/Bingo";
 
 const gap = 5;
 

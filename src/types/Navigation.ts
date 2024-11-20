@@ -1,9 +1,13 @@
 export enum Routes {
-    Home= 'Home',
-    Create= 'Create'
+  Mine = "Mine",
+  Create = "Create",
+  Search = "Search",
+  Help = "Help",
 }
 
 export type RootStackParamList = {
-    [Routes.Home]: undefined,
-    [Routes.Create]: undefined
-}
+  [Routes.Mine]: undefined;
+  [Routes.Create]: undefined;
+  [Routes.Search]: undefined;
+  [Routes.Help]: undefined;
+};
