@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@graphql-tools/mock": "^9.0.7",
+    "@graphql-tools/schema": "^10.0.9",
     "@types/node": "^22.9.1",
     "nodemon": "^3.1.7",
     "tsx": "^4.19.2",

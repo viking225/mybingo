@@ -1,6 +1,5 @@
 {
-  "watch": ["src"],
-  "exr": ".ts,.js",
-  "ignore": [],
+  "watch": ["src/"],
+  "ignore": ["**/__tests__/**"],
   "exec": "tsx ./src/index.ts"
 }
