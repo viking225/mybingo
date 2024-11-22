@@ -3,12 +3,12 @@ import { expressMiddleware } from "@apollo/server/express4";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 
 import cors from "cors";
-import fs from "fs";
 import express from "express";
 import { typeDefs, resolvers } from "@/graphQl.ts";
 import { addMocksToSchema } from "@graphql-tools/mock";
 
 const app = express();
+const PORT = process.env.SERVER_PORT;
 
 const apolloServer = new ApolloServer({
   schema: addMocksToSchema({
@@ -25,6 +25,6 @@ app.use(
   expressMiddleware(apolloServer),
 );
 
-app.listen("3000", () => {
-  console.log("Server started on 3000");
+app.listen(PORT, () => {
+  console.log(`Server started on ${PORT}`);
 });

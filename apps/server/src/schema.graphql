@@ -1,31 +1,31 @@
 #Types
 type User {
-    id: Int!
-    name: String!
+  id: Int!
+  name: String!
 }
 
 type BingoSheetData {
-    values: [String!]!
+  values: [String!]!
 }
 
 type BingoSheet {
-    schema: BingoSchema!
-    data: BingoSheetData!
+  schema: BingoSchema!
+  data: BingoSheetData!
 }
 
 type BingoSchema {
-    id: Int!
-    name: String!
-    description: String
-    width: Int!
-    height: Int!
-    owner: User!
+  id: Int!
+  name: String!
+  description: String
+  width: Int!
+  height: Int!
+  owner: User!
 }
 
 # Mutations
 
 # Queries
 type Query {
-    schema: [BingoSchema]
-    sheet: [BingoSheet]
+  schema: [BingoSchema]
+  sheet: [BingoSheet]
 }
