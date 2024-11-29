@@ -1,5 +1,0 @@
-{
-  "watch": ["src/"],
-  "ignore": ["**/__tests__/**"],
-  "exec": "dotenvx run -- tsx ./src/index.ts"
-}

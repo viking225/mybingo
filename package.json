@@ -4,8 +4,10 @@
   "main": "babel.config.js",
   "scripts": {
     "frontend:start": "npm run start -w @mybingo/frontend",
+    "generate:ts": "graphql-codegen",
     "format": "prettier . --write",
-    "test": "vitest"
+    "test": "vitest",
+    "prefrontend:start": "npm run generate:ts"
   },
   "workspaces": [
     "packages/*",
@@ -14,5 +16,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@graphql-codegen/cli": "^5.0.3"
+  }
 }
